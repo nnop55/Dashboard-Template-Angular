@@ -1,0 +1,120 @@
+.drawer-wrapper {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: var(--background);
+
+  &.closed {
+    .drawer-el {
+      width: 50px;
+      visibility: visible !important;
+      transform: translate3d(0%, 0, 0) !important;
+      display: block !important;
+      transition: 200ms;
+
+      .header-logo {
+        visibility: hidden;
+      }
+
+      .router-items-wrapper {
+        padding-left: 15px;
+      }
+    }
+
+    .drawer-el-content {
+      margin-left: 50px;
+    }
+  }
+
+  .drawer-el-content {
+    height: 100%;
+  }
+
+  .drawer-el {
+    width: 300px;
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      border-bottom: 2px solid var(--background);
+
+      ::ng-deep {
+        .logo-icon {
+          svg,
+          path {
+            fill: var(--default-blue-color);
+          }
+        }
+      }
+    }
+
+    .router-items-wrapper {
+      padding: 35px 0px 20px 20px;
+      .router-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .router-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          padding: 4px 0;
+          line-height: 2;
+          text-decoration: none;
+          font-size: 17px;
+
+          .icon {
+            width: 24px;
+            height: 28px;
+          }
+          .text {
+            color: var(--router-item-color);
+            font-weight: 500;
+          }
+
+          ::ng-deep {
+            .router-icon {
+              svg {
+                margin: -2px 0;
+              }
+
+              svg,
+              path {
+                fill: var(--router-item-color);
+              }
+            }
+          }
+
+          &.active {
+            position: relative;
+
+            .text {
+              color: var(--router-item-active-color);
+            }
+
+            ::ng-deep {
+              .router-icon {
+                svg,
+                path {
+                  fill: var(--router-item-active-color);
+                }
+              }
+            }
+
+            &::before {
+              position: absolute;
+              content: "";
+              width: 3px;
+              height: 100%;
+              background-color: var(--router-item-active-color);
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

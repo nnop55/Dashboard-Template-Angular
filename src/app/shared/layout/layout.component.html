@@ -1,0 +1,44 @@
+<mat-drawer-container class="drawer-wrapper" autosize [class.closed]="!drawer.opened">
+    <mat-drawer #drawer class="drawer-el" mode="side" >
+
+      <section>
+        <div class="header-logo">
+            <app-svg-view 
+              class="logo-icon" 
+              svgPath="icons/logo.svg"></app-svg-view>
+        </div>
+        <div class="router-items-wrapper">
+          <div class="router-items">
+            <a class="router-item"
+              routerLink="/dashboard"
+              routerLinkActive="active"
+            >
+              <app-svg-view 
+                class="router-icon" 
+                svgPath="icons/home.svg"></app-svg-view>
+              <p class="text">Dashboard</p>             
+            </a>
+
+            <a class="router-item"
+              routerLink="/dashboard"
+            >
+              <app-svg-view 
+                class="router-icon" 
+                svgPath="icons/home.svg"></app-svg-view>
+              <p class="text">Dashboard</p>             
+          </a>
+          </div>
+        </div>
+        
+      </section>
+
+    </mat-drawer>
+  
+    <div class="drawer-el-content" >
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div>
+  
+</mat-drawer-container>
+  
