@@ -8,7 +8,6 @@ export class ThemeService {
   private currentTheme: 'light' | 'dark' = 'light';
 
   constructor() {
-    console.log("TEST")
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       this.currentTheme = savedTheme as 'light' | 'dark';
