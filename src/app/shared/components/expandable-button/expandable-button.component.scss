@@ -1,0 +1,48 @@
+.item {
+  line-height: 2;
+  text-decoration: none;
+  font-size: 17px;
+
+  .sides {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      ::ng-deep {
+        .expand-icon {
+          path {
+            stroke: var(--router-item-color);
+          }
+        }
+      }
+    }
+
+    .right {
+      ::ng-deep {
+        .expand-icon {
+          > div {
+            transition: 300ms;
+          }
+          &.opened div {
+            transform: rotate(180deg);
+          }
+          path {
+            //stroke: var(--router-item-color);
+            fill: var(--router-item-color);
+          }
+        }
+      }
+    }
+  }
+
+  .text {
+    color: var(--router-item-color);
+    font-weight: 500;
+  }
+}

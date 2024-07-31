@@ -1,0 +1,22 @@
+<a class="item"
+    (click)="toggle()"
+>
+    <div class="sides layout-item-spaces">
+        <div class="left">
+            <app-svg-view 
+                class="expand-icon" 
+                svgPath="icons/{{icon}}.svg">
+            </app-svg-view>
+
+            <p class="text">{{text}}</p> 
+        </div>   
+        <div class="right">
+            <app-svg-view 
+                class="expand-icon" 
+                [class.opened]="isOpen"
+                svgPath="icons/arrow-down.svg">
+            </app-svg-view>
+        </div>
+    </div>    
+</a>
+

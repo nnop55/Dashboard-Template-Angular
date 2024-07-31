@@ -1,5 +1,11 @@
-<mat-drawer-container class="drawer-wrapper" autosize [class.closed]="!drawer.opened">
-    <mat-drawer #drawer class="drawer-el" mode="side" >
+<mat-drawer-container class="drawer-wrapper" autosize [class.closed]="!sidenavOpened">
+    <mat-drawer 
+      #drawer 
+      class="drawer-el" 
+      mode="side" 
+      [opened]="sidenavOpened"
+      (openedChange)="handleToggle($event)"
+    >
 
       <section>
         <div class="header-logo">
@@ -9,24 +15,43 @@
         </div>
         <div class="router-items-wrapper">
           <div class="router-items">
-            <a class="router-item"
+            <a class="router-item layout-item-spaces"
               routerLink="/dashboard"
               routerLinkActive="active"
             >
               <app-svg-view 
                 class="router-icon" 
-                svgPath="icons/home.svg"></app-svg-view>
+                svgPath="icons/dashboard.svg"></app-svg-view>
               <p class="text">Dashboard</p>             
             </a>
 
-            <a class="router-item"
-              routerLink="/dashboard"
+            <app-expandable-button
+              text="UI"
+              icon="ui-box"
+              (isOpenEmitter)="expansions.ui.opened= $event"
+            ></app-expandable-button>
+
+            <div class="ui-components-wrapper"
+                  [ngStyle]="{
+                    'height': expansions.ui.opened 
+                      ? expansions.ui.data.length * 45 + 'px' 
+                      : '0px' 
+                  }"
             >
-              <app-svg-view 
-                class="router-icon" 
-                svgPath="icons/home.svg"></app-svg-view>
-              <p class="text">Dashboard</p>             
-          </a>
+              @for(item of expansions.ui.data; track item){
+                <a class="router-item layout-item-spaces {{item.className}} point-items"
+                  [routerLink]="'/ui-components/' + item.routerLink"
+                  routerLinkActive="active"
+                >
+                  <app-svg-view 
+                    class="router-icon" 
+                    svgPath="icons/point.svg">
+                  </app-svg-view>
+                  <p class="text">{{item.text}}</p>             
+                </a>
+              }
+            </div>
+              
           </div>
         </div>
         

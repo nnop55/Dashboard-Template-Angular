@@ -10,6 +10,10 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
    <div [innerHTML]="sanitizedSvg"></div>
   `,
   styles: `
+    div{    
+      display: flex;
+      align-items: center;
+    }
   `
 })
 export class SvgViewComponent {
