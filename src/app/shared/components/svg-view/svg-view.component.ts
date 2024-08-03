@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   standalone: true,
   imports: [],
   template: `
-   <div [innerHTML]="sanitizedSvg"></div>
+   <div [innerHTML]="sanitizedSvg()"></div>
   `,
   styles: `
     div{    
@@ -19,7 +19,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class SvgViewComponent {
 
   @Input({ required: true }) svgPath!: string;
-  sanitizedSvg: SafeHtml = ''
+  sanitizedSvg = signal<SafeHtml>('')
 
   private http = inject(HttpClient);
   private sanitizer = inject(DomSanitizer);
@@ -28,7 +28,7 @@ export class SvgViewComponent {
     if (this.svgPath) {
       this.http.get(this.svgPath, { responseType: 'text' }).subscribe((data) => {
         const sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(data);
-        this.sanitizedSvg = sanitizedContent as string;
+        this.sanitizedSvg.set(sanitizedContent)
       });
     }
   }

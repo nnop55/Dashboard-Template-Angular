@@ -1,1 +1,101 @@
-<p>buttons works!</p>
+<section>
+    <div class="router"></div>
+    <div class="container">
+        <h3>Basic Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withoutIcons; track item){
+                <app-button 
+                    mode="basic" 
+                    [color]="item.color" 
+                    [text]="item.text"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Raised Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withoutIcons; track item){
+                <app-button 
+                    mode="raised" 
+                    [color]="item.color" 
+                    [text]="item.text"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Stroked Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withoutIcons; track item){
+                <app-button 
+                    mode="stroked" 
+                    [color]="item.color" 
+                    [text]="item.text"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Flat Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withoutIcons; track item){
+                <app-button 
+                    mode="flat" 
+                    [color]="item.color" 
+                    [text]="item.text"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Icon Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withIcons; track item){
+                <app-button 
+                    mode="icon" 
+                    [color]="item.color" 
+                    [iconName]="item.iconName"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Fab Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withIcons; track item){
+                <app-button 
+                    mode="fab" 
+                    [color]="item.color" 
+                    [iconName]="item.iconName"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <h3>Mini Fab Buttons</h3>
+
+        <div class="btns-wrapper">
+            @for(item of btnData.withIcons; track item){
+                <app-button 
+                    mode="mini-fab" 
+                    [color]="item.color" 
+                    [iconName]="item.iconName"
+                    [isDisabled]="item.isDisabled"
+                ></app-button>
+            }
+        </div>
+    </div>
+</section>

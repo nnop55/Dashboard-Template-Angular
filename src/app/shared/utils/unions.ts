@@ -10,5 +10,13 @@ class ILayoutExpansionItem {
 type LayoutExpansionItemType = {
     text: string,
     routerLink: string,
-    className: string
+    className?: string
 }[]
+
+export type BtnModes = 'basic' | 'raised' | 'stroked' | 'flat' | 'icon' | 'fab' | 'mini-fab' | 'extended-fab';
+export enum BtnColors {
+    Basic = 'basic',
+    Primary = 'primary',
+    Accent = 'accent',
+    Warn = 'warn'
+}

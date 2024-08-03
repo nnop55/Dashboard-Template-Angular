@@ -6,12 +6,12 @@ export const routes: Routes = [
         path: 'dashboard',
         loadChildren: () =>
             import('./features/dashboard/dashboard.routes')
-                .then(m => m.dashboardRoutes),
+                .then(m => m.dashboardRoutes)
     },
     {
         path: 'ui-components',
         loadChildren: () =>
             import('./features/ui-components/ui-components.routes')
-                .then(m => m.uiComponentRoutes),
+                .then(m => m.uiComponentRoutes)
     }
 ];

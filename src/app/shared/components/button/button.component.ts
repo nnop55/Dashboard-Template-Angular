@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { BtnModes } from '../../utils/unions';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, MatIconModule],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-
+  @Input() text!: string;
+  @Input() iconName!: string;
+  @Input() color!: string;
+  @Input() isDisabled: boolean = false
+  @Input({ required: true }) mode!: BtnModes;
 }
