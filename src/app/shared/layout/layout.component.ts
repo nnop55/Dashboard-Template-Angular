@@ -6,12 +6,11 @@ import { ExpandableButtonComponent } from '../components/expandable-button/expan
 import { ILayoutExpansions } from '../utils/unions';
 import { NgStyle } from '@angular/common';
 import { ui } from './expansion-items';
-import { BreadcrumbComponent } from '../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatSidenavModule, RouterLink, RouterLinkActive, SvgViewComponent, RouterOutlet, ExpandableButtonComponent, NgStyle, BreadcrumbComponent],
+  imports: [MatSidenavModule, RouterLink, RouterLinkActive, SvgViewComponent, RouterOutlet, ExpandableButtonComponent, NgStyle],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })

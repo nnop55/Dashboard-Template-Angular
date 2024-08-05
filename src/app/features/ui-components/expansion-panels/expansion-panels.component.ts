@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ExpansionPanelComponent } from '../../../shared/components/expansion-panel/expansion-panel.component';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-expansion-panels',
   standalone: true,
-  imports: [ExpansionPanelComponent],
+  imports: [ExpansionPanelComponent, BreadcrumbComponent],
   templateUrl: './expansion-panels.component.html',
   styleUrl: './expansion-panels.component.scss'
 })

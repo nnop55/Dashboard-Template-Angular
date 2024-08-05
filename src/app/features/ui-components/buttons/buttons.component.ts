@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { BtnColors } from '../../../shared/utils/unions';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, BreadcrumbComponent],
   templateUrl: './buttons.component.html',
   styleUrl: './buttons.component.scss'
 })
