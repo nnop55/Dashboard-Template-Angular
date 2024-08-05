@@ -7,7 +7,7 @@ export const ui = {
         },
         {
             text: 'Expansion Panel',
-            routerLink: "expansion-panel",
+            routerLink: "expansion-panels",
         },
         {
             text: 'Badge',

@@ -1,1 +1,38 @@
-<p>expansion-panel works!</p>
+@if(!group){
+  <mat-expansion-panel [expanded]="expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{title}} </mat-panel-title>
+      <mat-panel-description>
+        {{description}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <ng-content></ng-content>
+
+  </mat-expansion-panel>
+}@else {
+  <mat-accordion multi>
+    @for(panel of panels; track panel){
+
+      <mat-expansion-panel [expanded]="panel.expanded">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{panel.title}} </mat-panel-title>
+            <mat-panel-description>
+              {{panel.description}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+    
+          <ng-container *ngTemplateOutlet="panel.content"></ng-container>
+    
+      </mat-expansion-panel>
+    }
+
+  </mat-accordion>
+}
+
+
+
+
+

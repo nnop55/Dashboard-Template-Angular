@@ -14,6 +14,13 @@ export const uiComponentRoutes: Routes = [
                     import('./buttons/buttons.component')
                         .then(m => m.ButtonsComponent),
                 data: { breadcrumb: 'Buttons' }
+            },
+            {
+                path: 'expansion-panels',
+                loadComponent: () =>
+                    import('./expansion-panels/expansion-panels.component')
+                        .then(m => m.ExpansionPanelsComponent),
+                data: { breadcrumb: 'Expansion Panels' }
             }
         ]
     }

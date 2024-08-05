@@ -1,0 +1,35 @@
+
+
+<section>
+    <div class="container">
+        <h3>Basic expansion panel</h3>
+
+        <div class="expansions-wrapper">
+            <app-expansion-panel title="Panel 1" description="Description for Panel 1">
+                <p>This is the content for Panel 1.</p>
+            </app-expansion-panel>
+    
+            <app-expansion-panel title="Panel 2" description="Description for Panel 2">
+                <p>This is the content for Panel 2.</p>
+            </app-expansion-panel>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Basic expansion panel as group</h3>
+
+        <div class="expansions-wrapper">
+            <app-expansion-panel [panels]="panels" [group]="true">
+                <ng-template>
+                  <p>This is the content for Panel 1.</p>
+                </ng-template>
+                <ng-template>
+                  <p>This is the content for Panel 2.</p>
+                </ng-template>
+                <ng-template>
+                  <p>This is the content for Panel 3.</p>
+                </ng-template>
+            </app-expansion-panel> 
+        </div>
+    </div>
+</section>
