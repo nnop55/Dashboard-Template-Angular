@@ -6,12 +6,14 @@
                 @if(last){
                     <span>{{ breadcrumb.label }}</span>
                 }
-                @if(!last){
+                @if(!last && !breadcrumb.notClickable){
                     <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+                }
+                @if(breadcrumb.notClickable){
+                     <span>{{ breadcrumb.label }}</span>
                 }
             </li>
         }       
-      
     </ol>
-  </nav>
+</nav>
   

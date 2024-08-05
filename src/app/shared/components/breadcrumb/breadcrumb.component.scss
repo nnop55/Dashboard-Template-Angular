@@ -4,8 +4,27 @@
   margin-bottom: 1rem;
   list-style: none;
   border-radius: 0.25rem;
+  display: flex;
+  gap: 10px;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--container-title-color);
+    transition: 200ms;
+
+    &:hover {
+      color: var(--text-hover-dark);
+    }
+  }
+
+  span {
+    color: var(--container-title-color);
+  }
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  content: ">";
+  content: "•";
+  color: var(--container-title-color);
+  margin-right: 10px;
 }

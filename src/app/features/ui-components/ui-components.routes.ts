@@ -6,7 +6,7 @@ export const uiComponentRoutes: Routes = [
         loadComponent: () =>
             import('../../shared/layout/layout.component')
                 .then(m => m.LayoutComponent),
-        data: { breadcrumb: 'UI Components' },
+        data: { breadcrumb: 'UI Components', notClickable: true },
         children: [
             {
                 path: 'buttons',

@@ -10,15 +10,20 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './breadcrumb.component.scss'
 })
 export class BreadcrumbComponent {
-  breadcrumbs = signal<Array<{ label: string, url: string }>>([]);
+  breadcrumbs = signal<Array<{ label: string, url: string, notClickable: boolean }>>([]);
 
   private route = inject(ActivatedRoute);
 
   ngOnInit() {
     this.breadcrumbs.set(this.buildBreadcrumbs(this.route.root))
+    console.log(this.breadcrumbs())
   }
 
-  private buildBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Array<{ label: string, url: string }> = []): Array<{ label: string, url: string }> {
+  private buildBreadcrumbs(
+    route: ActivatedRoute,
+    url: string = '',
+    breadcrumbs: Array<{ label: string, url: string, notClickable: boolean }> = []
+  ): Array<{ label: string, url: string, notClickable: boolean }> {
     const children: ActivatedRoute[] = route.children;
 
     if (children.length === 0) {
@@ -32,8 +37,9 @@ export class BreadcrumbComponent {
       }
 
       const label = child.snapshot.data['breadcrumb'];
+      const notClickable = child.snapshot.data['notClickable'];
       if (label !== undefined) {
-        breadcrumbs.push({ label, url });
+        breadcrumbs.push({ label, url, notClickable: notClickable ?? false });
       }
 
       return this.buildBreadcrumbs(child, url, breadcrumbs);
