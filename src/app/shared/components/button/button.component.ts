@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { BtnModes } from '../../utils/unions';
+import { BtnTypes } from '../../utils/unions';
 
 @Component({
   selector: 'app-button',
@@ -15,5 +15,5 @@ export class ButtonComponent {
   @Input() iconName!: string;
   @Input() color!: string;
   @Input() isDisabled: boolean = false
-  @Input({ required: true }) mode!: BtnModes;
+  @Input({ required: true }) type!: BtnTypes;
 }
