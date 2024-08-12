@@ -28,7 +28,14 @@ export const uiComponentRoutes: Routes = [
                     import('./badges/badges.component')
                         .then(m => m.BadgesComponent),
                 data: { breadcrumb: 'Badge' }
-            }
+            },
+            {
+                path: 'chips',
+                loadComponent: () =>
+                    import('./chips/chips.component')
+                        .then(m => m.ChipsComponent),
+                data: { breadcrumb: 'Chips' }
+            },
         ]
     }
 ];

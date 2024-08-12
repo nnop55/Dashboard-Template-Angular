@@ -16,54 +16,84 @@ export class ButtonsComponent {
       {
         color: BtnColors.Basic,
         text: 'Basic',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Basic clicked")
+        }
       },
       {
         color: BtnColors.Primary,
         text: 'Primary',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Primary clicked")
+        }
       },
       {
         color: BtnColors.Accent,
         text: 'Accent',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Accent clicked")
+        }
       },
       {
         color: BtnColors.Warn,
         text: 'Warn',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Warn clicked")
+        }
       },
       {
         color: BtnColors.Basic,
         text: 'Disabled',
-        isDisabled: true
+        isDisabled: true,
+        action: () => {
+          console.log("Disabled clicked")
+        }
       }
     ],
     withIcons: [
       {
         color: BtnColors.Primary,
         iconName: 'settings',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Settings clicked")
+        }
       },
       {
         color: BtnColors.Accent,
         iconName: 'visibility',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Visibility clicked")
+        }
       },
       {
         color: BtnColors.Primary,
         iconName: 'favorite',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Favorite clicked")
+        }
       },
       {
         color: BtnColors.Accent,
         iconName: 'restore',
-        isDisabled: false
+        isDisabled: false,
+        action: () => {
+          console.log("Restore clicked")
+        }
       },
       {
         color: BtnColors.Accent,
         iconName: 'alarm_on',
-        isDisabled: true
+        isDisabled: true,
+        action: () => {
+          console.log("Alarm clicked")
+        }
       },
     ]
   }

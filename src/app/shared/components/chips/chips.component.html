@@ -1,1 +1,55 @@
-<p>chips works!</p>
+@switch (type) {
+    @case ('basic') {
+        <mat-chip-set>
+            @for(chip of data(); track chip){
+                <mat-chip [disabled]="chip.isDisabled">
+                    {{chip.text}}
+                </mat-chip>
+            }
+        </mat-chip-set>
+    }
+    @case ('autocomplete') {
+        <form>
+            <mat-form-field class="example-chip-list">
+              <mat-label>Favorite Fruits</mat-label>
+              <mat-chip-grid #chipGrid>
+                @for (item of data(); track $index) {
+                  <mat-chip-row (removed)="remove(item)">
+                    {{item}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + item">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip-row>
+                }
+              </mat-chip-grid>
+              <input
+                name="itemCtrl"
+                placeholder="New Fruit..."
+                #Input
+                [formControl]="itemCtrl"
+                [matChipInputFor]="chipGrid"
+                [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"
+              />
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                @for (fruit of filteredData(); track fruit) {
+                  <mat-option [value]="fruit">{{fruit}}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+        </form>           
+    }
+    @case ('avatar') {
+       
+    }
+    @case ('drag-drop') {
+       
+    }
+    @case ('input') {
+     
+    }
+    @case ('stacked') {
+      
+    }
+}

@@ -22,3 +22,5 @@ export enum BtnColors {
 }
 
 export type BadgeTypes = 'text' | 'btn' | 'icon';
+
+export type ChipsTypes = 'basic' | 'autocomplete' | 'avatar' | 'drag-drop' | 'input' | 'stacked';
