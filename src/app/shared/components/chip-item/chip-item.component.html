@@ -1,7 +1,7 @@
 @switch (type) {
     @case ('basic') {
         <mat-chip-set>
-            @for(chip of data(); track chip){
+            @for(chip of data; track chip){
                 <mat-chip [disabled]="chip.isDisabled">
                     {{chip.text}}
                 </mat-chip>
@@ -11,9 +11,9 @@
     @case ('autocomplete') {
         <form>
             <mat-form-field class="example-chip-list">
-              <mat-label>Favorite Fruits</mat-label>
+              <mat-label>{{label}}</mat-label>
               <mat-chip-grid #chipGrid>
-                @for (item of data(); track $index) {
+                @for (item of selectedItems(); track $index) {
                   <mat-chip-row (removed)="remove(item)">
                     {{item}}
                     <button matChipRemove [attr.aria-label]="'remove ' + item">
@@ -24,7 +24,6 @@
               </mat-chip-grid>
               <input
                 name="itemCtrl"
-                placeholder="New Fruit..."
                 #Input
                 [formControl]="itemCtrl"
                 [matChipInputFor]="chipGrid"
@@ -33,8 +32,8 @@
                 (matChipInputTokenEnd)="add($event)"
               />
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                @for (fruit of filteredData(); track fruit) {
-                  <mat-option [value]="fruit">{{fruit}}</mat-option>
+                @for (item of filteredData(); track item) {
+                  <mat-option [value]="item">{{item}}</mat-option>
                 }
               </mat-autocomplete>
             </mat-form-field>
