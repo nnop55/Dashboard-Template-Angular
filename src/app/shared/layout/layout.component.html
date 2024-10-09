@@ -11,7 +11,8 @@
         <div class="header-logo">
             <app-svg-view 
               class="logo-icon" 
-              svgPath="icons/logo.svg"></app-svg-view>
+              svgPath="icons/logo.svg"
+            />
         </div>
         <div class="router-items-wrapper">
           <div class="router-items">
@@ -21,7 +22,8 @@
             >
               <app-svg-view 
                 class="router-icon" 
-                svgPath="icons/dashboard.svg"></app-svg-view>
+                svgPath="icons/dashboard.svg"
+              />
               <p class="text">Dashboard</p>             
             </a>
 
@@ -45,8 +47,8 @@
                 >
                   <app-svg-view 
                     class="router-icon" 
-                    svgPath="icons/point.svg">
-                  </app-svg-view>
+                    svgPath="icons/point.svg"
+                  />
                   <p class="text">{{item.text}}</p>             
                 </a>
               }
@@ -65,7 +67,7 @@
       </button>
 
       <div class="content">
-        <router-outlet></router-outlet>
+        <router-outlet/>
       </div>
     </div>
   

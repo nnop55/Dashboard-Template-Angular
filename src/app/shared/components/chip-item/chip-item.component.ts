@@ -1,4 +1,4 @@
-import { Component, computed, Input, OnInit, signal } from '@angular/core';
+import { Component, computed, Input, OnInit, output, signal, WritableSignal } from '@angular/core';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,29 +16,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class ChipItemComponent implements OnInit {
   @Input({ required: true }) type!: ChipsTypes;
-  @Input() data: any[] = [
-    {
-      isDisabled: false,
-      text: 'Apple'
-    },
-    {
-      isDisabled: false,
-      text: 'Lemon'
-    },
-    {
-      isDisabled: false,
-      text: 'Lime'
-    },
-    {
-      isDisabled: false,
-      text: 'Orange'
-    },
-    {
-      isDisabled: false,
-      text: 'Strawberry'
-    }
-  ];
-  @Input() label!: string;
+  @Input() data = signal<any[]>([]);
+  @Input() label: string = 'Favorite Fruits';
+
+  emitSelectedItems = output<WritableSignal<any[]>>();
 
   selectedItems = signal<any[]>([]);
 
@@ -46,15 +27,16 @@ export class ChipItemComponent implements OnInit {
   readonly filteredData = computed(() => {
     const current = this.itemCtrl.value?.toLowerCase();
     return current
-      ? this.data.filter(item => item.text.toLowerCase().includes(current))
-      : this.data.slice();
+      ? this.data().filter(item => item.text.toLowerCase().includes(current))
+      : this.data().slice();
   });
 
   itemCtrl = new FormControl('');
 
   ngOnInit(): void {
-    if (this.data.length && this.data.length > 0) {
-      this.selectedItems.set([this.data[0].text])
+    if (this.data().length && this.data().length > 0) {
+      this.selectedItems.set([this.data()[0].text])
+      this.emitSelectedChange()
     }
   }
 
@@ -66,7 +48,7 @@ export class ChipItemComponent implements OnInit {
     }
 
     this.itemCtrl.setValue('');
-    console.log(this.itemCtrl.value)
+    this.emitSelectedChange()
   }
 
   remove(item: string): void {
@@ -85,5 +67,10 @@ export class ChipItemComponent implements OnInit {
     this.selectedItems.update(items => [...items, event.option.viewValue]);
     this.itemCtrl.setValue('');
     event.option.deselect();
+    this.emitSelectedChange()
+  }
+
+  emitSelectedChange() {
+    this.emitSelectedItems.emit(this.selectedItems)
   }
 }

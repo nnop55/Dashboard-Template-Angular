@@ -1,7 +1,7 @@
 @switch (type) {
     @case ('basic') {
         <mat-chip-set>
-            @for(chip of data; track chip){
+            @for(chip of data(); track chip){
                 <mat-chip [disabled]="chip.isDisabled">
                     {{chip.text}}
                 </mat-chip>
@@ -23,7 +23,6 @@
                 }
               </mat-chip-grid>
               <input
-                name="itemCtrl"
                 #Input
                 [formControl]="itemCtrl"
                 [matChipInputFor]="chipGrid"
@@ -33,7 +32,12 @@
               />
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
                 @for (item of filteredData(); track item) {
-                  <mat-option [value]="item">{{item}}</mat-option>
+                  <mat-option 
+                    [value]="item" 
+                    [disabled]="item.disabled"
+                  >
+                    {{item.text}}
+                  </mat-option>
                 }
               </mat-autocomplete>
             </mat-form-field>

@@ -6,7 +6,23 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   selector: 'app-breadcrumb',
   standalone: true,
   imports: [NgClass, RouterLink],
-  templateUrl: './breadcrumb.component.html',
+  template: `
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        @for(breadcrumb of breadcrumbs(); track breadcrumb){
+            <li class="breadcrumb-item"
+                [ngClass]="{'active': $index === breadcrumbs().length - 1 }">
+                @if($index === breadcrumbs().length - 1 || breadcrumb.notClickable){
+                    <span>{{ breadcrumb.label }}</span>
+                }
+                @if($index !== breadcrumbs().length - 1 && !breadcrumb.notClickable){
+                    <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+                }
+            </li>
+        }       
+    </ol>
+  </nav>
+`,
   styleUrl: './breadcrumb.component.scss'
 })
 export class BreadcrumbComponent {

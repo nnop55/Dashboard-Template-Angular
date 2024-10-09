@@ -7,8 +7,50 @@ import { BtnTypes } from '../../utils/unions';
   selector: 'app-button',
   standalone: true,
   imports: [MatButtonModule, MatIconModule],
-  templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  template: `
+  @switch (type) {
+    @case ('basic') {
+        <button mat-button (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          {{text}}
+        </button>
+    }
+    @case ('raised') {
+        <button mat-raised-button (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          {{text}}
+        </button>
+    }
+    @case ('stroked') {
+        <button mat-stroked-button (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          {{text}}
+        </button>
+    }
+    @case ('flat') {
+        <button mat-flat-button (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          {{text}}
+        </button>
+    }
+    @case ('icon') {
+        <button mat-icon-button (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          <mat-icon>{{iconName}}</mat-icon>
+        </button>
+    }
+    @case ('fab') {
+        <button mat-fab (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          <mat-icon>{{iconName}}</mat-icon>
+        </button>
+    }
+    @case ('mini-fab') {
+        <button mat-mini-fab (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          <mat-icon>{{iconName}}</mat-icon>
+        </button>
+    }
+    @case ('extended-fab') {
+        <button mat-fab extended (click)="btnClick()" [disabled]="isDisabled" [color]="color">
+          <mat-icon>{{iconName}}</mat-icon>
+        </button>
+    }
+  }
+  `
 })
 export class ButtonComponent {
   @Input() text!: string;

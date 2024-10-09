@@ -8,8 +8,29 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-badge',
   standalone: true,
   imports: [MatBadgeModule, MatButtonModule, MatIconModule],
-  templateUrl: './badge.component.html',
-  styleUrl: './badge.component.scss'
+  template: `
+  @switch (type) {
+      @case ('text') {
+          <div 
+              [matBadge]="badgeContent" 
+              matBadgeOverlap="false" 
+              [matBadgePosition]="badgePosition">
+              {{content}}
+          </div>
+      }
+      @case ('btn') {
+          <button 
+              mat-raised-button 
+              [matBadge]="badgeContent" 
+              [matBadgePosition]="badgePosition">
+              {{content}}
+          </button>
+      }
+      @case ('icon') {
+          <mat-icon [matBadgePosition]="badgePosition" [matBadge]="badgeContent">{{content}}</mat-icon>
+      }
+  }
+`
 })
 export class BadgeComponent {
   @Input({ required: true }) type!: BadgeTypes;

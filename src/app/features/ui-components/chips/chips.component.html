@@ -1,11 +1,11 @@
 <section>
-    <app-breadcrumb></app-breadcrumb>
+    <app-breadcrumb/>
 
     <div class="container">
         <h3>Basic Chips</h3>
 
         <div class="chips-wrapper">
-            <app-chip-item type="basic"></app-chip-item>
+            <app-chip-item type="basic" [data]="chipsData"/>
         </div>
     </div>
 
@@ -13,7 +13,11 @@
         <h3>Chips Autocomplete</h3>
 
         <div class="chips-wrapper">
-            <app-chip-item type="autocomplete"></app-chip-item>
+            <app-chip-item 
+                type="autocomplete" 
+                [data]="chipsData"
+                (emitSelectedItems)="handleSelectedItemEmit($event)"
+            />
         </div>
     </div>
 </section>
