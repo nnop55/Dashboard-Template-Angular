@@ -15,8 +15,8 @@
               <mat-chip-grid #chipGrid>
                 @for (item of selectedItems(); track $index) {
                   <mat-chip-row (removed)="remove(item)">
-                    {{item}}
-                    <button matChipRemove [attr.aria-label]="'remove ' + item">
+                    {{item.text}}
+                    <button matChipRemove>
                       <mat-icon>cancel</mat-icon>
                     </button>
                   </mat-chip-row>
@@ -34,7 +34,7 @@
                 @for (item of filteredData(); track item) {
                   <mat-option 
                     [value]="item" 
-                    [disabled]="item.disabled"
+                    [disabled]="item.isDisabled"
                   >
                     {{item.text}}
                   </mat-option>

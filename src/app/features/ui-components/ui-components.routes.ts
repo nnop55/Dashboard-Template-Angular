@@ -36,6 +36,13 @@ export const uiComponentRoutes: Routes = [
                         .then(m => m.ChipsComponent),
                 data: { breadcrumb: 'Chips' }
             },
+            {
+                path: 'lists',
+                loadComponent: () =>
+                    import('./lists/lists.component')
+                        .then(m => m.ListsComponent),
+                data: { breadcrumb: 'Lists' }
+            },
         ]
     }
 ];

@@ -2,7 +2,7 @@ import { Component, computed, Signal, signal, WritableSignal } from '@angular/co
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { ChipItemComponent } from '../../../shared/components/chip-item/chip-item.component';
 import { autocompleteChipsData, avatarChipsData, chipsData, dragDropChipsData, inputChipsData } from './chips';
-import { ChipsTypes, ISignalEmitter } from '../../../shared/utils/unions';
+import { ChipsTypes, IChipList, ISignalEmitter } from '../../../shared/utils/unions';
 
 @Component({
   selector: 'app-chips',
@@ -13,13 +13,13 @@ import { ChipsTypes, ISignalEmitter } from '../../../shared/utils/unions';
 })
 export class ChipsComponent {
 
-  chipsData = signal<any[]>(chipsData);
-  dragDropChipsData = signal<any[]>(dragDropChipsData);
-  autocompleteChipsData = signal<any[]>(autocompleteChipsData);
-  avatarChipsData = signal<any[]>(avatarChipsData);
-  inputChipsData = signal<any[]>(inputChipsData);
+  chipsData = signal<IChipList[]>(chipsData);
+  dragDropChipsData = signal<IChipList[]>(dragDropChipsData);
+  autocompleteChipsData = signal<IChipList[]>(autocompleteChipsData);
+  avatarChipsData = signal<IChipList[]>(avatarChipsData);
+  inputChipsData = signal<IChipList[]>(inputChipsData);
 
-  selectedAutocompleteItems!: Signal<any[]>;
+  selectedAutocompleteItems!: Signal<IChipList[]>;
 
   handleActions(event: ISignalEmitter, type: ChipsTypes) {
     switch (type) {

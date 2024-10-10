@@ -19,7 +19,7 @@ export const ui = {
         },
         {
             text: 'Lists',
-            routerLink: "list",
+            routerLink: "lists",
         },
         {
             text: 'Menu',

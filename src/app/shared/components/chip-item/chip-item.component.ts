@@ -3,7 +3,7 @@ import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/ma
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ActionTypes, ChipsTypes, ISignalEmitter } from '../../utils/unions';
+import { ActionTypes, ChipsTypes, IChipList, ISignalEmitter } from '../../utils/unions';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -25,14 +25,14 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 })
 export class ChipItemComponent implements OnInit {
   @Input({ required: true }) type!: ChipsTypes;
-  @Input() data = signal<any[]>([]);
+  @Input() data = signal<IChipList[]>([]);
   @Input() label: string = 'Items';
 
   emitSelectedItems = output<ISignalEmitter>();
   emitDataDropped = output<ISignalEmitter>();
   emitData = output<ISignalEmitter>();
 
-  selectedItems = signal<any[]>([]);
+  selectedItems = signal<IChipList[]>([]);
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   readonly filteredData = computed(() => {
@@ -54,7 +54,7 @@ export class ChipItemComponent implements OnInit {
     }
 
     if (this.data().length && this.data().length > 0) {
-      this.selectedItems.set([this.data()[0].text])
+      this.selectedItems.set([this.data()[0]])
       this.emitter(ActionTypes.Selected)
     }
   }
@@ -63,7 +63,7 @@ export class ChipItemComponent implements OnInit {
     const value = (event.value || '').trim();
 
     let updateTypes: Partial<{ [key in ChipsTypes]: void }> = {
-      'autocomplete': this.selectedItems.update(items => [...items, value]),
+      'autocomplete': this.selectedItems.update(items => [...items, { text: value, isDisabled: false }]),
       'input': this.data.update(items => [...items, { text: value, isDisabled: false }])
     }
 
@@ -76,7 +76,7 @@ export class ChipItemComponent implements OnInit {
     this.itemCtrl.setValue('');
   }
 
-  remove(item: string): void {
+  remove(item: IChipList): void {
     const remove = (data: WritableSignal<any[]>) => {
       data.update(items => {
         const index = items.indexOf(item);
@@ -118,7 +118,8 @@ export class ChipItemComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.selectedItems.update(items => [...items, event.option.viewValue]);
+    console.log(event.option.value)
+    this.selectedItems.update(items => [...items, event.option.value]);
     this.itemCtrl.setValue('');
     event.option.deselect();
     this.emitter(ActionTypes.Selected)
