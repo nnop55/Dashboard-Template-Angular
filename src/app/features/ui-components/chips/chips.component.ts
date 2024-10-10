@@ -1,6 +1,8 @@
 import { Component, computed, Signal, signal, WritableSignal } from '@angular/core';
 import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb.component';
 import { ChipItemComponent } from '../../../shared/components/chip-item/chip-item.component';
+import { autocompleteChipsData, avatarChipsData, chipsData, dragDropChipsData, inputChipsData } from './chips';
+import { ChipsTypes, ISignalEmitter } from '../../../shared/utils/unions';
 
 @Component({
   selector: 'app-chips',
@@ -11,34 +13,28 @@ import { ChipItemComponent } from '../../../shared/components/chip-item/chip-ite
 })
 export class ChipsComponent {
 
-  chipsData = signal<any[]>([
-    {
-      isDisabled: false,
-      text: 'Apple'
-    },
-    {
-      isDisabled: false,
-      text: 'Lemon'
-    },
-    {
-      isDisabled: false,
-      text: 'Lime'
-    },
-    {
-      isDisabled: false,
-      text: 'Orange'
-    },
-    {
-      isDisabled: false,
-      text: 'Strawberry'
-    }
-
-  ])
+  chipsData = signal<any[]>(chipsData);
+  dragDropChipsData = signal<any[]>(dragDropChipsData);
+  autocompleteChipsData = signal<any[]>(autocompleteChipsData);
+  avatarChipsData = signal<any[]>(avatarChipsData);
+  inputChipsData = signal<any[]>(inputChipsData);
 
   selectedAutocompleteItems!: Signal<any[]>;
 
-  handleSelectedItemEmit(event: WritableSignal<any[]>) {
-    this.selectedAutocompleteItems = computed(event);
+  handleActions(event: ISignalEmitter, type: ChipsTypes) {
+    switch (type) {
+      case 'autocomplete':
+        console.log('autocomplete', event.action)
+        this.selectedAutocompleteItems = computed(event.sig);
+        break;
+      case 'drag-drop':
+        console.log('drag-drop', event.action)
+        break;
+      case 'input':
+        console.log('input', event.action)
+        break;
+    }
+
   }
 
 }

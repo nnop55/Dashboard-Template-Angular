@@ -1,3 +1,5 @@
+import { WritableSignal } from "@angular/core";
+
 export class ILayoutExpansions {
     ui!: ILayoutExpansionItem;
 }
@@ -24,3 +26,16 @@ export enum BtnColors {
 export type BadgeTypes = 'text' | 'btn' | 'icon';
 
 export type ChipsTypes = 'basic' | 'autocomplete' | 'avatar' | 'drag-drop' | 'input' | 'stacked';
+
+export enum ActionTypes {
+    Remove = 'remove',
+    Add = 'add',
+    Edit = 'edit',
+    Drop = 'drop',
+    Selected = 'selected'
+}
+
+export interface ISignalEmitter {
+    sig: WritableSignal<any[]>;
+    action: ActionTypes;
+}

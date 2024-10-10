@@ -2,7 +2,7 @@
     <app-breadcrumb/>
 
     <div class="container">
-        <h3>Basic Chips</h3>
+        <h3>Chips</h3>
 
         <div class="chips-wrapper">
             <app-chip-item type="basic" [data]="chipsData"/>
@@ -15,8 +15,40 @@
         <div class="chips-wrapper">
             <app-chip-item 
                 type="autocomplete" 
-                [data]="chipsData"
-                (emitSelectedItems)="handleSelectedItemEmit($event)"
+                [data]="autocompleteChipsData"
+                (emitSelectedItems)="handleActions($event,'autocomplete')"
+            />
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Chips avatar</h3>
+
+        <div class="chips-wrapper">
+            <app-chip-item type="avatar" [data]="avatarChipsData"/>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Chips Drag and Drop</h3>
+
+        <div class="chips-wrapper">
+            <app-chip-item 
+                type="drag-drop" 
+                [data]="dragDropChipsData"
+                (emitDataDropped)="handleActions($event,'drag-drop')"
+            />
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Chips with input</h3>
+
+        <div class="chips-wrapper">
+            <app-chip-item 
+                type="input" 
+                [data]="inputChipsData"
+                (emitData)="handleActions($event,'input')"
             />
         </div>
     </div>
