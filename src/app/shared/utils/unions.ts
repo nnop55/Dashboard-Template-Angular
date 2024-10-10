@@ -24,13 +24,20 @@ export enum BtnColors {
 }
 
 export type BadgeTypes = 'text' | 'btn' | 'icon';
-
 export type ChipsTypes = 'basic' | 'autocomplete' | 'avatar' | 'drag-drop' | 'input' | 'stacked';
+export type ListTypes = 'basic' | 'sections';
 
-export interface IChipList {
+export interface IData {
     text: string,
-    isDisabled: boolean,
-    src?: string
+    isDisabled?: boolean,
+    src?: string,
+    updated?: Date,
+}
+
+export interface IListSection {
+    title: string,
+    list: IData[],
+    icon: string
 }
 
 export enum ActionTypes {

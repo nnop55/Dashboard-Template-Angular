@@ -2,9 +2,24 @@
     <app-breadcrumb/>
 
     <div class="container">
-        <h3>Lists</h3>
+        <h3>Basic list</h3>
 
         <div class="lists-wrapper">
+            <app-list 
+                type="basic"
+                [data]="data"
+            />
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>List with sections</h3>
+
+        <div class="lists-wrapper">
+            <app-list 
+                type="sections"
+                [sectionsData]="sectionsData"
+            />
         </div>
     </div>
 </section>

@@ -1,4 +1,8 @@
-<mat-drawer-container class="drawer-wrapper" autosize [class.closed]="!drawer.opened">
+<mat-drawer-container 
+  class="drawer-wrapper" 
+  autosize 
+  [class.closed]="!drawer.opened"
+>
     <mat-drawer 
       #drawer 
       class="drawer-el" 
@@ -31,7 +35,7 @@
               text="UI"
               icon="ui-box"
               (isOpenEmitter)="getExpansionsSig().ui.opened= $event"
-            ></app-expandable-button>
+            />
 
             <div class="ui-components-wrapper"
                   [ngStyle]="{

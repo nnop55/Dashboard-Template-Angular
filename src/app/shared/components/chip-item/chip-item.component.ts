@@ -3,7 +3,7 @@ import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/ma
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ActionTypes, ChipsTypes, IChipList, ISignalEmitter } from '../../utils/unions';
+import { ActionTypes, ChipsTypes, IData, ISignalEmitter } from '../../utils/unions';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -25,14 +25,14 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 })
 export class ChipItemComponent implements OnInit {
   @Input({ required: true }) type!: ChipsTypes;
-  @Input() data = signal<IChipList[]>([]);
+  @Input() data = signal<IData[]>([]);
   @Input() label: string = 'Items';
 
   emitSelectedItems = output<ISignalEmitter>();
   emitDataDropped = output<ISignalEmitter>();
   emitData = output<ISignalEmitter>();
 
-  selectedItems = signal<IChipList[]>([]);
+  selectedItems = signal<IData[]>([]);
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   readonly filteredData = computed(() => {
@@ -76,7 +76,7 @@ export class ChipItemComponent implements OnInit {
     this.itemCtrl.setValue('');
   }
 
-  remove(item: IChipList): void {
+  remove(item: IData): void {
     const remove = (data: WritableSignal<any[]>) => {
       data.update(items => {
         const index = items.indexOf(item);

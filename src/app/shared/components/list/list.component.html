@@ -1,1 +1,34 @@
-<p>list works!</p>
+@switch (type) {
+    @case ('basic') {
+        <mat-list role="list">
+            @for(item of data(); track item){
+                <mat-list-item 
+                    role="listitem"
+                >
+                    {{item.text}}
+                </mat-list-item>
+            }
+        </mat-list>
+    }
+    @case ('sections') {
+        <mat-list>
+            @for (
+                section of sectionsData();
+                 track section; 
+                 let sectionIndex = $index
+                ) {
+                <div mat-subheader>{{section.title}}</div>
+                @for (item of section.list; track item) {
+                    <mat-list-item>
+                        <mat-icon matListItemIcon>{{section.icon}}</mat-icon>
+                        <div matListItemTitle>{{item.text}}</div>
+                        <div matListItemLine>{{item.updated | date}}</div>
+                    </mat-list-item>
+                }
+                @if(sectionIndex !== sectionsData().length - 1){
+                    <mat-divider></mat-divider>
+                }               
+            }
+          </mat-list>
+    }
+}
