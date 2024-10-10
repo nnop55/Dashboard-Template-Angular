@@ -24,14 +24,14 @@ export class ChipsComponent {
   handleActions(event: ISignalEmitter, type: ChipsTypes) {
     switch (type) {
       case 'autocomplete':
-        console.log('autocomplete', event.action)
+        console.log('autocomplete', event.action, event.sig())
         this.selectedAutocompleteItems = computed(event.sig);
         break;
       case 'drag-drop':
-        console.log('drag-drop', event.action)
+        console.log('drag-drop', event.action, event.sig())
         break;
       case 'input':
-        console.log('input', event.action)
+        console.log('input', event.action, event.sig())
         break;
     }
 

@@ -89,7 +89,6 @@
             placeholder="New fruit..."
             [matChipInputFor]="chipGrid"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="true"
             (matChipInputTokenEnd)="add($event)"
           />
         </mat-chip-grid>
