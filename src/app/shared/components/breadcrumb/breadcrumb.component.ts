@@ -32,7 +32,6 @@ export class BreadcrumbComponent {
 
   ngOnInit() {
     this.breadcrumbs.set(this.buildBreadcrumbs(this.route.root))
-    console.log(this.breadcrumbs())
   }
 
   private buildBreadcrumbs(

@@ -1,1 +1,43 @@
-<p>menu works!</p>
+@switch (type) {
+    @case ('basic') {
+        <button 
+            mat-button 
+            [matMenuTriggerFor]="menu">
+            {{data().view}}
+        </button>
+        <mat-menu #menu="matMenu" 
+            [yPosition]="data().yPos ?? 'below'"
+            [xPosition]="data().xPos ?? 'after'"
+            >
+            @for (item of data().items; track $index) {
+                <button 
+                    mat-menu-item 
+                    [disabled]="item.isDisabled"
+                    (click)="btnClick(item)"
+                >
+                    {{item.text}}
+                </button>
+            }
+        </mat-menu>        
+    }
+    @case ('icons') {
+        <button 
+            mat-icon-button 
+            [matMenuTriggerFor]="menu" 
+        >
+            <mat-icon>{{data().view}}</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            @for (item of data().items; track $index) {
+                <button 
+                    mat-menu-item 
+                    [disabled]="item.isDisabled"
+                    (click)="btnClick(item)"
+                >
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span>{{item.text}}</span>
+                </button>
+            }
+        </mat-menu>
+    }
+}

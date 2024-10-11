@@ -43,6 +43,13 @@ export const uiComponentRoutes: Routes = [
                         .then(m => m.ListsComponent),
                 data: { breadcrumb: 'Lists' }
             },
+            {
+                path: 'menus',
+                loadComponent: () =>
+                    import('./menus/menus.component')
+                        .then(m => m.MenusComponent),
+                data: { breadcrumb: 'Menus' }
+            },
         ]
     }
 ];

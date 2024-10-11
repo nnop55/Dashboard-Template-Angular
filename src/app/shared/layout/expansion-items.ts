@@ -23,7 +23,7 @@ export const ui = {
         },
         {
             text: 'Menu',
-            routerLink: "menu",
+            routerLink: "menus",
         },
         {
             text: 'Paginator',

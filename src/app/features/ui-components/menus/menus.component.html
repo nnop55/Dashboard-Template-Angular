@@ -1,0 +1,54 @@
+<section>
+    <app-breadcrumb/>
+
+    <div class="container">
+        <h3>Basic menu</h3>
+
+        <div class="lists-wrapper">
+            <app-menu
+                type="basic"
+                [data]="data"
+                (onClick)="handleClick($event)"
+            />
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Menu with icons</h3>
+
+        <div class="lists-wrapper">
+            <app-menu
+                type="icons"
+                [data]="iconData"
+                (onClick)="handleClick($event)"
+            />
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Menu positioning</h3>
+
+        <div class="lists-wrapper">
+            <app-menu
+                type="basic"
+                [data]="aboveData"
+                (onClick)="handleClick($event)"
+            />
+            <app-menu
+                type="basic"
+                [data]="belowData"
+                (onClick)="handleClick($event)"
+            />
+            <app-menu
+                type="basic"
+                [data]="beforeData"
+                (onClick)="handleClick($event)"
+            />
+            <app-menu
+                type="basic"
+                [data]="afterData"
+                (onClick)="handleClick($event)"
+            />
+        </div>
+    </div>
+</section>
