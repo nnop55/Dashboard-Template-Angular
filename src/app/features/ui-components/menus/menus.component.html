@@ -8,7 +8,7 @@
             <app-menu
                 type="basic"
                 [data]="data"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'basic')"
             />
         </div>
     </div>
@@ -20,7 +20,7 @@
             <app-menu
                 type="icons"
                 [data]="iconData"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'icons')"
             />
         </div>
     </div>
@@ -32,22 +32,22 @@
             <app-menu
                 type="basic"
                 [data]="aboveData"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'above')"
             />
             <app-menu
                 type="basic"
                 [data]="belowData"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'below')"
             />
             <app-menu
                 type="basic"
                 [data]="beforeData"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'before')"
             />
             <app-menu
                 type="basic"
                 [data]="afterData"
-                (onClick)="handleClick($event)"
+                (onClick)="handleClick($event,'after')"
             />
         </div>
     </div>

@@ -19,7 +19,7 @@ export class MenusComponent {
   afterData = signal<IMenu>(afterPosData);
   iconData = signal<IMenu>(menuIconData);
 
-  handleClick(ev: IData) {
-    console.log(ev)
+  handleClick(ev: IData, type: string) {
+    console.log(ev, type)
   }
 }
